@@ -1,13 +1,16 @@
-blockquote { border: 2px dashed white;  }
+blockquote { padding: 2vw; }
 
 #quote-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  margin-top: 10vh;
   background-color: #041C32;
   color: white;
+  padding: 5vw;
 }
+
+#text { padding: 2%; }
+
+#author { padding: 5%; }
 
 #icon { width: 9%; }
 
-#new-quote { width: 25%; }
+#new-quote { padding: 5%; }
