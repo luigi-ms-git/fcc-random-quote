@@ -16,9 +16,9 @@
   <main id="quote-box" class="container">
     <div class="row">
       <div class="col-12">
-        <blockquote class="border border-success">
-          <p id="text" class="lead">Phasellus convallis tristique lacus, at vestibulum purus pretium ut. Aenean ut laoreet est. Proin faucibus viverra nisl, et volutpat nulla. Duis quis malesuada tellus, at.</p>
-          <small id="author">Fonte</small>
+        <blockquote id="app" class="border border-success" :key="controll">
+          <p id="text" class="lead">{{ quote }}</p>
+          <small id="author">{{ author }}</small>
         </blockquote>
       </div>
     </div>
@@ -37,16 +37,34 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" 
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
 		crossorigin="anonymous"></script>
-	
 	<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-	
+	<script src="script.js"></script>
 	<script type="module">
 		import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
 			
   	createApp({
-			data() {},
-			mounted() {},
-			template: ``
+			data() {
+			  return {
+			    quote: "Quote",
+			    author: "Fonte",
+			    controll: 0
+			  }
+			},
+			mounted() {
+			  const url = "https://api.quotable.io/random?tags=history";
+			  fetch(url, { method: "GET"})
+			    .then(res => res.json())
+			    .then(json => {
+			      this.quote = json.content;
+			      this.author = json.author;
+			    })
+			    .catch(rej => console.error(rej));
+			},
+			methods: {
+			  forceRerender(){
+			    this.controll += 1;
+			  }
+			}
 		}).mount('#app');
 	</script>
 </body>
