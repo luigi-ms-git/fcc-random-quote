@@ -1,0 +1,13 @@
+blockquote { border: 2px dashed white;  }
+
+#quote-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: #041C32;
+  color: white;
+}
+
+#icon { width: 9%; }
+
+#new-quote { width: 25%; }
